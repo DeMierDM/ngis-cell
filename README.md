@@ -171,12 +171,13 @@ genomes = create_genome_library()
 
 ### Adaptive Learning Behavior
 
-**RewardGenomeV2** demonstrates sophisticated adaptive behavior:
+**RewardGenomeV2** demonstrates sophisticated adaptive behavior following **Philosophy A: "Success = stabilize, failure = adapt harder"**:
 
-- **High rewards** (above target) → **Reduce learning rate** (maintain stability)
-- **Low rewards** (below target) → **Increase learning rate** (boost adaptation)  
-- **Gradual changes** via EMA smoothing
-- **Bounded limits** prevent pathological behavior
+- **High rewards** (above target) → **Reduce learning rate** (lock in success, refine slowly)
+- **Low rewards** (below target) → **Increase learning rate** (try harder, explore more)  
+- **Gradual changes** via EMA smoothing prevent abrupt transitions
+- **Bounded limits** prevent pathological collapse or explosion
+- **Genome-specific targets** create distinct behavioral profiles
 
 ## 🔧 Technical Details
 

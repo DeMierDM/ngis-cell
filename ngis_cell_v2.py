@@ -68,6 +68,7 @@ class RewardGenomeV2(NGISGenome):
     - α_t bounded in [α_min, α_max] (no collapse/explosion)  
     - Smooth sigmoid response (no harsh exponentials)
     - Advantage-based (reward relative to target, not absolute)
+    - Philosophy A: Success stabilizes learning, failure increases exploration
     """
     
     def __init__(
@@ -136,8 +137,9 @@ class RewardGenomeV2(NGISGenome):
         adv_t = R_t - self.target_reward
         
         # 3) Map advantage to [0,1] via sigmoid
-        # Good performance (adv > 0) → λ < 0.5 → lower learning rate
-        # Bad performance (adv < 0) → λ > 0.5 → higher learning rate  
+        # Philosophy A: "Success = stabilize, failure = adapt harder"
+        # Good performance (adv > 0) → λ < 0.5 → α closer to α_min (stabilize)
+        # Bad performance (adv < 0) → λ > 0.5 → α closer to α_max (adapt harder)
         lam = self._sigmoid(-self.sensitivity * adv_t)
         
         # 4) Map λ to bounded learning rate
