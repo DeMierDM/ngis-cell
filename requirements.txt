@@ -1,0 +1,18 @@
+# Core dependencies for NGIS Cell
+numpy>=1.20.0
+matplotlib>=3.5.0
+
+# Development and testing  
+pytest>=6.0.0
+pytest-cov>=2.0.0
+
+# Optional: Enhanced scientific computing
+scipy>=1.7.0
+
+# Optional: Jupyter for experiments and analysis
+jupyter>=1.0.0
+notebook>=6.0.0
+
+# Optional: Advanced plotting
+seaborn>=0.11.0
+plotly>=5.0.0
